@@ -17,3 +17,4 @@ libgdbm-dev
 flex
 bison
 build-essential
+arandr
