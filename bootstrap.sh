@@ -55,8 +55,26 @@ function i3chmod
     chmod +x ~/.config/i3/scripts/*
 }
 
+function vim_install
+{
+    # Copy config
+    cp -r .vim* ~/
+
+    # Get Vundle
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+    # Install packages
+    echo "\r" | vim -y +PluginInstall +qall
+
+    # Install YouCompleteMe
+    cd ~/.vim/plugged/YouCompleteMe
+    ./install.py --clang-completer
+}
+
 install_apt_packages
 install_external_apt_packages
 copy_config_folder
 copy_hyper_config
 copy_bash_aliases
+i3chmod
+vim_install
